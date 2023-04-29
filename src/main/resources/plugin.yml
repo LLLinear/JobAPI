@@ -1,4 +1,18 @@
 name: JobAPI
 author: LLLinear
 version: 1.0.0
-main: com.github.jobapi.JOBAPI
+api-version: 1.19
+main: com.github.lllinear.jobapi.JobAPI
+
+permissions:
+  lllinear.command:
+    children:
+      job:
+        default: op
+        description: permission to use job command.
+
+commands:
+  job:
+    permission: lllinear.command.job
+    description: JobAPI command.
+    permission-message: You don't have enough permission to use this command.

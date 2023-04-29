@@ -3,7 +3,7 @@ plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
-group = "com.github"
+group = "com.github.lllinear"
 version = "1.0-SNAPSHOT"
 
 repositories {
