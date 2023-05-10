@@ -13,6 +13,10 @@ import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 
 abstract class Ability {
+    lateinit var icon: ItemStack
+    lateinit var name: String
+    lateinit var description: String
+
     /**
      * @param event PlayerInteractEvent
      */
@@ -62,19 +66,4 @@ abstract class Ability {
      * @param event EntityDeathEvent
      */
     open fun onDeath(event: EntityDeathEvent) {}
-
-    /**
-     * @return ability icon
-     */
-    abstract fun getIcon(): ItemStack
-
-    /**
-     * @return ability name
-     */
-    abstract fun getName(): String
-
-    /**
-     * @return ability description
-     */
-    abstract fun getDescription(): String
 }

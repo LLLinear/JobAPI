@@ -4,6 +4,11 @@ import com.github.lllinear.jobapi.abilities.Ability
 import org.bukkit.inventory.ItemStack
 
 abstract class Job {
+    lateinit var id: String
+    lateinit var icon: ItemStack
+    lateinit var name: String
+    lateinit var description: String
+
     private val abilityList = ArrayList<Ability>()
 
     /**
@@ -25,24 +30,4 @@ abstract class Job {
         abilityList.add(ability)
         return true
     }
-
-    /**
-     * @return Job id
-     */
-    abstract fun getId(): String
-
-    /**
-     * @return Job icon
-     */
-    abstract fun getIcon(): ItemStack
-
-    /**
-     * @return Job name
-     */
-    abstract fun getName(): String
-
-    /**
-     * @return Job description
-     */
-    abstract fun getDescription(): String
 }

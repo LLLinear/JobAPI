@@ -6,22 +6,11 @@ import org.bukkit.inventory.ItemStack
 
 class Example: Job() {
     init {
+        id = "jobapi:example"
+        icon = ItemStack(Material.BOOK)
+        name = "Example"
+        description = "Example Job Class"
+
         addAbility(ExampleAbility())
-    }
-
-    override fun getId(): String {
-        return "jobapi:example"
-    }
-
-    override fun getIcon(): ItemStack {
-        return ItemStack(Material.IRON_SWORD)
-    }
-
-    override fun getName(): String {
-        return "Example"
-    }
-
-    override fun getDescription(): String {
-        return "Fight with sword."
     }
 }

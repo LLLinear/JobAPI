@@ -3,21 +3,11 @@ package com.github.lllinear.jobapi.jobs
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class None: Job() {
-    override fun getId(): String {
-        return "jobapi:none"
+class None : Job() {
+    init {
+        id = "jobapi:none"
+        icon = ItemStack(Material.BARRIER)
+        name = "None"
+        description = ""
     }
-
-    override fun getIcon(): ItemStack {
-        return ItemStack(Material.BARRIER)
-    }
-
-    override fun getName(): String {
-        return "None"
-    }
-
-    override fun getDescription(): String {
-        return ""
-    }
-
 }

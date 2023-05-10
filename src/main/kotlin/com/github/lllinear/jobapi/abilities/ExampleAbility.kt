@@ -11,6 +11,12 @@ import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 
 class ExampleAbility: Ability() {
+    init {
+        icon = ItemStack(Material.NETHER_STAR)
+        name = "Example Ability"
+        description = "Example Ability Class"
+    }
+
     override fun onClick(event: PlayerInteractEvent) {
         Bukkit.broadcastMessage("OnClick")
     }
@@ -50,17 +56,4 @@ class ExampleAbility: Ability() {
     override fun onDeath(event: EntityDeathEvent) {
         Bukkit.broadcastMessage("OnDeath")
     }
-
-    override fun getIcon(): ItemStack {
-        return ItemStack(Material.IRON_SWORD)
-    }
-
-    override fun getName(): String {
-        return "Example Name"
-    }
-
-    override fun getDescription(): String {
-        return "Example Description"
-    }
-
 }

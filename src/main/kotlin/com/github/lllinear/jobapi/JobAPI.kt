@@ -4,7 +4,6 @@ import com.github.lllinear.jobapi.jobs.Example
 import com.github.lllinear.jobapi.jobs.None
 import com.github.lllinear.jobapi.managers.JobManager
 import com.github.lllinear.jobapi.managers.UserManager
-import net.minecraft.world.level.levelgen.HeightMap.Use
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -62,7 +61,7 @@ class JobAPI: JavaPlugin(), Listener {
     private fun onClick(event: PlayerInteractEvent) {
         val name = event.player.name
         val job = UserManager.getJob(name)
-        if (job.getId() != None().getId()) {
+        if (job.id != None().id) {
             for (ability in job.getAbilityList()) {
                 ability.onClick(event)
             }
@@ -73,7 +72,7 @@ class JobAPI: JavaPlugin(), Listener {
     private fun onPlace(event: BlockPlaceEvent) {
         val name = event.player.name
         val job = UserManager.getJob(name)
-        if (job.getId() != None().getId()) {
+        if (job.id != None().id) {
             for (ability in job.getAbilityList()) {
                 ability.onPlace(event)
             }
@@ -84,7 +83,7 @@ class JobAPI: JavaPlugin(), Listener {
     private fun onBreak(event: BlockBreakEvent) {
         val name = event.player.name
         val job = UserManager.getJob(name)
-        if (job.getId() != None().getId()) {
+        if (job.id != None().id) {
             for (ability in job.getAbilityList()) {
                 ability.onBreak(event)
             }
@@ -95,7 +94,7 @@ class JobAPI: JavaPlugin(), Listener {
     private fun onFishing(event: PlayerFishEvent) {
         val name = event.player.name
         val job = UserManager.getJob(name)
-        if (job.getId() != None().getId()) {
+        if (job.id != None().id) {
             for (ability in job.getAbilityList()) {
                 ability.onFishing(event)
             }
@@ -108,7 +107,7 @@ class JobAPI: JavaPlugin(), Listener {
         if (entity is Player) {
             val name = entity.name
             val job = UserManager.getJob(name)
-            if (job.getId() != None().getId()) {
+            if (job.id != None().id) {
                 for (ability in job.getAbilityList()) {
                     ability.onDamage(event)
                 }
@@ -120,7 +119,7 @@ class JobAPI: JavaPlugin(), Listener {
             if (damager is Player) {
                 val name = damager.name
                 val job = UserManager.getJob(name)
-                if (job.getId() != None().getId()) {
+                if (job.id != None().id) {
                     for (ability in job.getAbilityList()) {
                         ability.onAttack(event)
                     }
@@ -135,7 +134,7 @@ class JobAPI: JavaPlugin(), Listener {
         if (shooter is Player) {
             val name = shooter.name
             val job = UserManager.getJob(name)
-            if (job.getId() != None().getId()) {
+            if (job.id != None().id) {
                 for (ability in job.getAbilityList()) {
                     ability.onLaunch(event)
                 }
@@ -149,7 +148,7 @@ class JobAPI: JavaPlugin(), Listener {
         if (shooter is Player) {
             val name = shooter.name
             val job = UserManager.getJob(name)
-            if (job.getId() != None().getId()) {
+            if (job.id != None().id) {
                 for (ability in job.getAbilityList()) {
                     ability.onHit(event)
                 }
@@ -163,7 +162,7 @@ class JobAPI: JavaPlugin(), Listener {
         if (entity is Player) {
             val name = entity.name
             val job = UserManager.getJob(name)
-            if (job.getId() != None().getId()) {
+            if (job.id != None().id) {
                 for (ability in job.getAbilityList()) {
                     ability.onDeath(event)
                 }
@@ -174,7 +173,7 @@ class JobAPI: JavaPlugin(), Listener {
             val killer = entity.killer!!
             val name = killer.name
             val job = UserManager.getJob(name)
-            if (job.getId() != None().getId()) {
+            if (job.id != None().id) {
                 for (ability in job.getAbilityList()) {
                     ability.onKill(event)
                 }

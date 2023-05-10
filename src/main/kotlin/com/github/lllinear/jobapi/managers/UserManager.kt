@@ -38,7 +38,7 @@ class UserManager {
             userJobMap[name] = job
 
             if (isConfigChange) {
-                JobAPI.getPlugin().config.set("$name.job", job.getId())
+                JobAPI.getPlugin().config.set("$name.job", job.id)
             }
         }
 
@@ -50,20 +50,5 @@ class UserManager {
         fun setJob(player: Player, job: Job, isConfigChange: Boolean = false) {
             setJob(player.name, job, isConfigChange)
         }
-    }
-
-    /***
-     * @return Player job
-     */
-    fun Player.getJob(): Job {
-        return getJob(this)
-    }
-
-    /***
-     * @param job Player job
-     * @param isConfigChange If True, change config data
-     */
-    fun Player.setJob(job: Job, isConfigChange: Boolean = false) {
-        setJob(this, job, isConfigChange)
     }
 }
