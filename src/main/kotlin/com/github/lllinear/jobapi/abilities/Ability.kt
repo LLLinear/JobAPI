@@ -10,6 +10,8 @@ import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.entity.ProjectileLaunchEvent
 import org.bukkit.event.player.PlayerFishEvent
 import org.bukkit.event.player.PlayerInteractEvent
+import org.bukkit.event.player.PlayerJoinEvent
+import org.bukkit.event.player.PlayerRespawnEvent
 import org.bukkit.inventory.ItemStack
 
 abstract class Ability {
@@ -66,4 +68,14 @@ abstract class Ability {
      * @param event EntityDeathEvent
      */
     open fun onDeath(event: EntityDeathEvent) {}
+
+    /**
+     * @param event PlayerRespawnEvent
+     */
+    open fun onRespawn(event: PlayerRespawnEvent) {}
+
+    /**
+     * @param event PlayerJoinEvent
+     */
+    open fun onJoin(event: PlayerJoinEvent) {}
 }

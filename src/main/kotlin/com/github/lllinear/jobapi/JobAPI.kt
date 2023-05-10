@@ -18,6 +18,7 @@ import org.bukkit.event.entity.ProjectileLaunchEvent
 import org.bukkit.event.player.PlayerFishEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerJoinEvent
+import org.bukkit.event.player.PlayerRespawnEvent
 import org.bukkit.plugin.java.JavaPlugin
 
 class JobAPI: JavaPlugin(), Listener {
@@ -54,6 +55,13 @@ class JobAPI: JavaPlugin(), Listener {
         val path = "${name}.job"
         if (config.contains(path) && JobManager.getJob(config.get(path) as String) != null) {
             UserManager.setJob(name, JobManager.getJob(config.get(path) as String)!!)
+        }
+
+        val job = UserManager.getJob(name)
+        if (job.id != None().id) {
+            for (ability in job.getAbilityList()) {
+                ability.onJoin(event)
+            }
         }
     }
 
@@ -177,6 +185,17 @@ class JobAPI: JavaPlugin(), Listener {
                 for (ability in job.getAbilityList()) {
                     ability.onKill(event)
                 }
+            }
+        }
+    }
+
+    @EventHandler
+    private fun onRespawn(event: PlayerRespawnEvent) {
+        val name = event.player.name
+        val job = UserManager.getJob(name)
+        if (job.id != None().id) {
+            for (ability in job.getAbilityList()) {
+                ability.onRespawn(event)
             }
         }
     }
