@@ -8,6 +8,6 @@ class None : Job() {
         id = "jobapi:none"
         icon = ItemStack(Material.BARRIER)
         name = "None"
-        description = ""
+        description = listOf()
     }
 }

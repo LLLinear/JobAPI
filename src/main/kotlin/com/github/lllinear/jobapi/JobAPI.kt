@@ -1,6 +1,6 @@
 package com.github.lllinear.jobapi
 
-import com.github.lllinear.jobapi.jobs.Example
+import com.github.lllinear.jobapi.jobs.example.Example
 import com.github.lllinear.jobapi.jobs.None
 import com.github.lllinear.jobapi.managers.JobManager
 import com.github.lllinear.jobapi.managers.UserManager
@@ -45,16 +45,17 @@ class JobAPI: JavaPlugin(), Listener {
         for (player in Bukkit.getOnlinePlayers()) {
             val name = player.name
             val path = "${name}.job"
-            UserManager.setJob(name, JobManager.getJob(config.get(path) as String)!!)
+            UserManager.setJob(player, JobManager.getJob(config.get(path) as String))
         }
     }
 
     @EventHandler
     private fun onJoin(event: PlayerJoinEvent) {
-        val name = event.player.name
+        val player = event.player
+        val name = player.name
         val path = "${name}.job"
-        if (config.contains(path) && JobManager.getJob(config.get(path) as String) != null) {
-            UserManager.setJob(name, JobManager.getJob(config.get(path) as String)!!)
+        if (config.contains(path) && UserManager.getJob(name).id != None().id) {
+            UserManager.setJob(player, JobManager.getJob(config.get(path) as String))
         }
 
         val job = UserManager.getJob(name)

@@ -21,7 +21,7 @@ class JobManager {
          * @return True if register successful (if already registered, return False)
          */
         fun registerJob(job: Job): Boolean {
-            val id = job.getId()
+            val id = job.id
             if (jobMap.containsKey(id)) {
                 return false
             }
@@ -45,11 +45,11 @@ class JobManager {
 
         /**
          * @param id Job id
-         * @return Job (if isn't registered id, return null)
+         * @return Job (if isn't registered id, return None)
          */
-        fun getJob(id: String): Job? {
+        fun getJob(id: String): Job {
             if (!jobMap.containsKey(id)) {
-                return null
+                return None()
             }
 
             return jobMap[id]!!

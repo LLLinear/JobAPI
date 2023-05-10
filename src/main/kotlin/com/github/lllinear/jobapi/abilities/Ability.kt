@@ -1,6 +1,6 @@
 package com.github.lllinear.jobapi.abilities
 
-import org.bukkit.Material
+import org.bukkit.entity.Player
 import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.event.block.BlockPlaceEvent
 import org.bukkit.event.entity.EntityDamageByEntityEvent
@@ -14,10 +14,22 @@ import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.event.player.PlayerRespawnEvent
 import org.bukkit.inventory.ItemStack
 
-abstract class Ability {
+abstract class Ability: Cloneable {
     lateinit var icon: ItemStack
     lateinit var name: String
-    lateinit var description: String
+    var displayName: String? = null
+        get() {
+            if (field == null) {
+                return name
+            }
+            return field
+        }
+    lateinit var description: List<String>
+
+    /**
+     * @param player Player
+     */
+    open fun onAttach(player: Player) {}
 
     /**
      * @param event PlayerInteractEvent
@@ -78,4 +90,8 @@ abstract class Ability {
      * @param event PlayerJoinEvent
      */
     open fun onJoin(event: PlayerJoinEvent) {}
+
+    public override fun clone(): Ability {
+        return super.clone() as Ability
+    }
 }

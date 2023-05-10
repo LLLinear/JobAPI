@@ -3,11 +3,18 @@ package com.github.lllinear.jobapi.jobs
 import com.github.lllinear.jobapi.abilities.Ability
 import org.bukkit.inventory.ItemStack
 
-abstract class Job {
+abstract class Job: Cloneable {
     lateinit var id: String
     lateinit var icon: ItemStack
     lateinit var name: String
-    lateinit var description: String
+    var displayName: String? = null
+        get() {
+            if (field == null) {
+                return name
+            }
+            return field
+        }
+    lateinit var description: List<String>
 
     private val abilityList = ArrayList<Ability>()
 
@@ -20,14 +27,12 @@ abstract class Job {
 
     /**
      * @param ability Job to register
-     * @return True if add successful (if already existed, return False)
      */
-    fun addAbility(ability: Ability): Boolean {
-        if (abilityList.contains(ability)) {
-            return false
-        }
+    fun addAbility(ability: Ability) {
+        abilityList.add(ability.clone())
+    }
 
-        abilityList.add(ability)
-        return true
+    public override fun clone(): Job {
+        return super.clone() as Job
     }
 }
